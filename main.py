@@ -1,14 +1,26 @@
 import random
 import os
+import sys
 from big_letters import header
 
 
 def run():
-    random_word = get_random_word(read())
-    show_header()
-    print_blank_spaces(random_word)
-    input_letter(random_word)
-
+    arguments = sys.argv
+    arguments.pop(0)
+    if arguments == []:
+        os.system('clear')
+        random_word = get_random_word(read())
+        show_header()
+        print_blank_spaces(random_word)
+        input_letter(random_word)
+    elif '-h' in arguments:
+        print("""
+        
+        """)
+    elif '-a' in arguments:
+        arguments.pop(0)
+        append_word(arguments)
+        
 
 def show_header():
     print(header)
@@ -67,7 +79,22 @@ def normalize(s):
     return s
 
 
+def append_word(words: list):
+    all_words = read()
+    with open('./data.txt', 'a', encoding='utf-8') as f:
+        i = 0
+        for word in words:
+            word = word
+            if word in all_words:
+                print("{} already exists.".format(word))
+            else:
+                f.write('\n' + word)
+                print('[{}] {} save succesfully'.format(i, word))
+                i += 1
+
 if __name__ == '__main__':
-    os.system('clear')
-    run()
+    try:
+        run()
+    except KeyboardInterrupt:
+        print('\nKeyboard Interrupt')
  
