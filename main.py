@@ -70,3 +70,4 @@ def normalize(s):
 if __name__ == '__main__':
     os.system('clear')
     run()
+ 
