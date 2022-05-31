@@ -11,3 +11,12 @@ header = f"""
     ***     *** ***     *** ***     ***  *********  ***     *** ***     *** ***     ***      
     ***     *** ***     *** ***     ***   *******   ***     *** ***     *** ***     ***     
 """
+
+help_message = """Hangman Game, created by Fishviche @fishviche
+
+    -h: Show help message
+    -p: Play a game
+    -a <word>: Add word to the list
+    -d <word>: Remove word to the list
+    -l <word>: Show all words
+"""

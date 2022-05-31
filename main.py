@@ -1,7 +1,7 @@
 import random
 import os
 import sys
-from big_letters import header
+from big_letters import header, help_message
 
 
 def run():
@@ -14,13 +14,15 @@ def run():
         print_blank_spaces(random_word)
         input_letter(random_word)
     elif '-h' in arguments:
-        print("""
-        
-        """)
+        print(help_message)
     elif '-a' in arguments:
         arguments.pop(0)
         append_word(arguments)
-        
+    elif '-d' in arguments:
+        arguments.pop(0)
+        delete_word(arguments)
+    elif '-l' in arguments:
+        show_words(read())
 
 def show_header():
     print(header)
@@ -91,6 +93,17 @@ def append_word(words: list):
                 f.write('\n' + word)
                 print('[{}] {} save succesfully'.format(i, word))
                 i += 1
+
+
+def delete_word(words: list):
+    all_words = read()
+    print('Borrar')
+
+
+def show_words(words: list):
+    for word in words:
+        print(word)
+
 
 if __name__ == '__main__':
     try:
